@@ -8,9 +8,16 @@ then
     exit 2
 fi
 
+gcloud compute instances list | grep "$2"
+if ! [ "$?" = 0 ]
+then
+    echo "Instance $2 does not exist"
+    exit 1
+fi
+
 if [ "$1" = "start" ]
 then
-    echo "Starting Virtual Machine: $2 ..."
+    echo "Starting cloud instances: $2 ..."
     gcloud compute instances start "$2"
     if [ "$?" = 1 ]
     then
@@ -19,7 +26,7 @@ then
     fi
 elif [ "$1" = "restart" ]
 then
-    echo "Restarting Virtual Machine: $2 ..."
+    echo "Restarting cloud instances: $2 ..."
     gcloud compute instances stop "$2"
     if [ "$?" = 0 ]
     then
@@ -30,7 +37,7 @@ then
     fi
 elif [ "$1" = "stop" ]
 then
-    echo "Stopping Virtual Machine: $2 ..."
+    echo "Stopping cloud instances: $2 ..."
     gcloud compute instances stop "$2"
     if [ "$?" = 1 ]
     then
