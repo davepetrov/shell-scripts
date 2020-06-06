@@ -1,4 +1,4 @@
-#! bash/bin
+#!/bin/bash
 # Checks for # of arguments
 if [ $# -ne 2 ]; then
     echo usage: $0 [../Source/] [../Target/]
