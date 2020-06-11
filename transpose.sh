@@ -1,4 +1,6 @@
 #!/bin/bash
+
+
 # Checks for # of arguments
 if [ $# -ne 2 ]; then
     echo usage: $0 [../Source/] [../Target/]
@@ -15,12 +17,12 @@ fi
 mkdir "$2"
 for i in "$1"/*
 do
-    course=`basename "$i"`
+    outer=`basename "$i"`
     for j in "$i"/*
     do  
-        time=`basename "$j"`
-        mkdir "$2/$time/"
-        mkdir "$2/$time/$course"
-        cp -nr "$j"/* "$2/$time/$course"
+        inner=`basename "$j"`
+        mkdir "$2/$inner/"
+        mkdir "$2/$inner/$outer"
+        cp -nr "$j"/* "$2/$inner/$outer"
     done
 done
