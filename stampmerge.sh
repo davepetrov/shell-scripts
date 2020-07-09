@@ -17,7 +17,7 @@ case "$#" in
         dir="$1"
         ;;
     "2")
-        sep="1"
+        sep="$2"
         dir="$1"
         ;;
     *)
@@ -37,9 +37,10 @@ ls $dir | grep -e "[0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9].log" | while read 
 do
     out="$(echo $file | cut -b 1-7).log" #year-mo.log
     pre=$(echo $file | cut -b 1-10)     
+
     cat $file | while IFS= read -r line #IFS=: avoids removing leading and trailing spaces, -r disables backslash escaping
     do
-        echo "${pre}${sep}${line}"
+       echo "${pre}${sep}${line}"
     done >> $out
 done
 
