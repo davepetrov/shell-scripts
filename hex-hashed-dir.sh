@@ -3,7 +3,13 @@
 # Each image ID is a 16 character 64-bit string. 
 # Ie. 1234...6789.png -> 89/67/.../34/12/ would be created
 
-ls | grep -e "[0-9]\{16\}.*" | while read file 
+if $# >= 1 ; then
+    path="$1"
+else
+    path="$PWD"
+fi
+
+ls path | grep -e "[0-9]\{16\}.*" | while read file 
 do
     rev_hex=$(echo $file | cut -b 1-16 | rev) 
     new_tree=
