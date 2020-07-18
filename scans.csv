@@ -1,3 +1,19 @@
-IP,Name
-192.168.0.12,David's-Macbook
-192.168.0.11,Valeri's-iPhone
+ipv4Address,displayName
+--------------------------
+192.168.0.1,Router
+192.168.0.2,DeviceName-2
+192.168.0.3,DeviceName-3
+192.168.0.4,DeviceName-4
+192.168.0.5,DeviceName-5
+192.168.0.6,DeviceName-6
+192.168.0.7,DeviceName-7
+192.168.0.8,DeviceName-8
+192.168.0.9,DeviceName-9
+192.168.0.10,DeviceName-10
+192.168.0.11,Valeri's MotoX
+192.168.0.12,David's Macbook Pro 2018
+192.168.0.13,DeviceName-13
+192.168.0.14,David's iPhone X
+192.168.0.15,DeviceName-15
+192.168.0.16,DeviceName-16
+192.168.0.17,DeviceName-17
