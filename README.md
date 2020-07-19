@@ -54,5 +54,5 @@ Ex:
 ## network-connections :iphone: :watch: :computer:
 Usage: python3 network-connections.py
 
-This script notifys you if the people specified in the scans.csv file enter/exit the premisis of the machine. You may write specific ipv4 addresses with associated device names in the corresponding scans.csv (format: ipv4Address,displayName) file. This script only works on mac devices. The more device listed in scans.csb, the slower the program runs. Will need to optimize this...
+If the people specified in the scans.csv file enter/exit the premisis of the machine, you will be notified on the top right of your screen. You may write specific ipv4 addresses with associated device names in the corresponding scans.csv (format: ipv4Address,displayName) file. This script only works on mac devices. The more device listed in scans.csb, the slower the program runs. Will need to optimize this...
 
