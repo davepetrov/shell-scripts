@@ -13,7 +13,7 @@ import subprocess
 import os 
 
 def notification(title, message):
-    """Notifies the logged in user about the download completion."""
+    """Notifies the logged in user"""
 
     cmd = 'ntfy -t "{0}" send "{1}"'.format(title, message)
     os.system(cmd)
@@ -41,19 +41,38 @@ for n in nodes:
     people.append(Person(ip, name, False))
 
 while True:
-    for person in people: #Go through recorded data
-        ping_cmd = 'ping -c 1 {} | grep "[0-9] packets received" | cut -f4 -d" "'.format(person.ip)
+    for i in range(20, 22):
+        ip = '192.168.0.{}'.format(i)
+        print("checking misc ip {}".format(ip))
+        ping_cmd = 'ping -c 1 {} | grep "[0-9] packets received" | cut -f4 -d" "'.format(ip)
         ping_run = subprocess.Popen(ping_cmd, shell=True, stdout=subprocess.PIPE)
         packets = ping_run.communicate()[0][:-1].decode("utf-8")
+        if packets == "1":# and ip not in ips_to_names:
+            print("Watch out: Misc device connected to your wifi! ")
+            notification( "Watchout!", "[{}] Misc device connected to your wifi! ".format(ip))
 
-        if packets == "1" and person.status==False:
-            print("Hello! {} has ENTERED the premisis".format(person.name))
-            notification("Hello!", "{} has ENTERED the premisis".format(person.name))
-            person.status=True
+        #Fast checking recorded data while checking all the other possible misc devices
+        for person in people:
+            print("Checking "+person.name)
+            
+            ping_cmd = 'ping -c 1 {} | grep "[0-9] packets received" | cut -f4 -d" "'.format(person.ip)
+            ping_run = subprocess.Popen(ping_cmd, shell=True, stdout=subprocess.PIPE)
+            packets = ping_run.communicate()[0][:-1].decode("utf-8")
 
-        elif packets == "0" and person.status==True:
-            print("Bye! {} has LEFT the premisis".format(person.name))
-            notification( "Bye!", "{} has LEFT the premisis".format(person.name))
-            person.status=False
-        
-                
+            if packets == "1":
+                if person.status==False:
+                    print("Hello! {} has ENTERED the premisis".format(person.name))
+                    notification("Hello!", "{} has ENTERED the premisis".format(person.name))
+                    person.status=True
+                else:
+                    pass
+                    #print("{} is in the premisis already".format(person.name))
+
+            elif packets == "0":
+                if person.status==True:
+                    print("Bye! {} has LEFT the premisis".format(person.name))
+                    notification( "Bye!", "{} has LEFT the premisis".format(person.name))
+                    person.status=False
+                else:
+                    pass
+                    #print("{} is not in the premisis".format(person.name))
