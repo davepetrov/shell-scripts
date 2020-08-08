@@ -51,8 +51,8 @@ Ex:
      Your currently directory includes YYYY-MM-01.log, YYYY-M1-02.log
      When run, the information within the daily log file are concatenated and appended into YYYY-MM.log in order based on their day
 
-## network-connections :iphone: :watch: :computer:
+## network-scannner :iphone: :watch: :computer:
 Usage: python3 network-connections.py
 
-If the people specified in the scans.csv file enter/exit the premisis of the machine, you will be notified on the top right of your screen. You may write specific ipv4 addresses with associated device names in the corresponding scans.csv (format: ipv4Address,displayName) file. This script only works on mac devices. The more device listed in scans.csb, the slower the program runs. Will need to optimize this...
+If the people specified in the scans.csv file enter/exit the premisis of the machine, you will be notified on the top right of your screen. You may write specific ipv4 addresses with associated device names in the corresponding scans.csv (format: ipv4Address,displayName) file. This script only works on mac devices due to desktop notifications apple supported package *ntfy*.
 
